@@ -19,6 +19,15 @@ addBtn.addEventListener("click", () => {
   onAdd();
 });
 
+input.addEventListener("keydown", (event) => {
+  if (event.isComposing) {
+    return;
+  }
+  if (event.key === 'Enter') {
+    onAdd();
+  }
+});
+
 let id = 0;
 function createElement(text) {
   const itemRow = document.createElement("div");
@@ -36,12 +45,6 @@ function createElement(text) {
   id++;
   return itemRow;
 }
-
-input.addEventListener("keypress", (event) => {
-  if (event.keyCode === 13) {
-    onAdd();
-  }
-});
 
 items.addEventListener("click", (event) => {
   const id = event.target.dataset.id;
