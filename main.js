@@ -1,6 +1,12 @@
 const items = document.querySelector(".items");
 const input = document.querySelector(".footer__input");
 const addBtn = document.querySelector(".footer__button");
+const form = document.querySelector(".new-form");
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  onAdd();
+})
 
 function onAdd() {
   const text = input.value;
@@ -14,19 +20,6 @@ function onAdd() {
   input.value = "";
   input.focus();
 }
-
-addBtn.addEventListener("click", () => {
-  onAdd();
-});
-
-input.addEventListener("keydown", (event) => {
-  if (event.isComposing) {
-    return;
-  }
-  if (event.key === 'Enter') {
-    onAdd();
-  }
-});
 
 let id = 0;
 function createElement(text) {
